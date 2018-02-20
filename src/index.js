@@ -28,4 +28,5 @@ function arraygroups() {
 
 return groups;
 }
+ console.log(arraygroups())
 };

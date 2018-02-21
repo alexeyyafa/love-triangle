@@ -3,9 +3,8 @@
  * @returns number of love triangles
  */
 module.exports = function getLoveTrianglesCount(preferences = []) {
- preferences.sort(function(a, b){return a - b});
-
 function arrayunique(preferences) {
+	preferences.sort(function(a, b){return a - b});
     var tmp_arr = new Array();
     for (var i = 0; i < preferences.length; i++) {
         if (tmp_arr.indexOf(preferences[i]) == "-1") {
@@ -13,9 +12,11 @@ function arrayunique(preferences) {
         }
     }
     return tmp_arr;
+
 }
 
-function arraygroups() {
+
+function arraygroups(preferences = []) {
     var groups = 0;
     for(var i=0; i < arrayunique(preferences).length; i++){
 
@@ -28,5 +29,5 @@ function arraygroups() {
 
 return groups;
 }
- console.log(arraygroups())
+return arraygroups(preferences);
 };

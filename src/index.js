@@ -19,9 +19,9 @@ module.exports = function getLoveTrianglesCount(preferences = []) {
           count++;
       }
   }
-  function getNext(n) {
-      while (checked.includes(n)) n++
-          return n;
+  function getNext(e) {
+      while (checked.includes(e)) e++
+          return e;
   }
   return (count);
 };

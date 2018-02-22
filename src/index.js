@@ -34,5 +34,5 @@ preferences.unshift(10);
 
         return n;
 
-};
+}
 };

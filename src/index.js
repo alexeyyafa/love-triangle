@@ -3,31 +3,36 @@
  * @returns number of love triangles
  */
 module.exports = function getLoveTrianglesCount(preferences = []) {
-function arrayunique(preferences) {
-	preferences.sort(function(a, b){return a - b});
-    var tmp_arr = new Array();
-    for (var i = 0; i < preferences.length; i++) {
-        if (tmp_arr.indexOf(preferences[i]) == "-1") {
-            tmp_arr.push(preferences[i]);
+function doit(preferences){
+var	t = [];
+var n = 0;
+var used = [];
+var v = 0;
+
+preferences.unshift(10);
+
+
+   for(k=0; k < preferences.length-1; k++){
+        v = preferences[k];
+
+
+      if(v-preferences[v] && v-preferences[preferences[v]] && preferences[v]-preferences[preferences[v]] // no duplicpreferencestes
+             && preferences[preferences[v]] == k // tripreferencesngle
+
+           && !used[v] && !used[preferences[v]] && !used[preferences[preferences[v]]] // not used yet
+        ){
+
+       t[n] = [v, preferences[v], preferences[preferences[v]]];
+
+            used[v] = 1;
+            used[preferences[v]] = 1;
+            used[preferences[preferences[v]]] = 1;
+
+            ++n;
         }
     }
-    return tmp_arr;
 
-}
+        return n;
 
-
-function arraygroups(preferences = []) {
-    var groups = 0;
-    for(var i=0; i < arrayunique(preferences).length; i++){
-
-        if(arrayunique(preferences)[i] + 1 == arrayunique(preferences)[i+1] && arrayunique(preferences)[i] + 2 ==arrayunique(preferences)[i+2]){
-
-            ++groups;
-            i += 2;
-        }
-    }
-
-return groups;
-}
-return arraygroups(preferences);
+};
 };
